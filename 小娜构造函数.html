@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+      
+</body>
+<script> 
+    //1.询问  2.计算总和  3.计算时间  4.讲笑话；
+    
+function Xiaona(){
+    this.Xunwen = function(){ //开头提示用户进行选择；
+        var a = prompt('1.计算总和\n 2.计算时间 \n 3.讲个笑话 \n 输入q退出');
+         return a;
+    };
+    this.tuichu = function(){    //退出功能；
+        var t = alert('小娜退出了');
+        return t;
+    }
+    this.jishuan = function(){ //计算总和
+        var arr = prompt('1,2,3,4,5,6...');
+        var r = arr.split(',');
+        var sum = 0;
+        for(var i = 0; i<r.length; i++){
+            
+            sum += parseFloat(r[i]);
+        }
+        // return sum;
+        alert(sum);
+    }
+    this.time = function(){    //计算时间
+        var date = new Date();                   
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var min = date.getMinutes();
+        var s = date.getSeconds();
+        function time(n){                   
+            if(n<10){
+                n = '0' + n;
+            }
+            return n;
+        }
+        var time = y + '-' + time(m) + '-' + time(d) + ' ' + time(h) + ':' + time(min) + ':' + time(s);
+        alert (time);
+    }
+
+    this.jokes = function(){
+        var arr = ['x1','x2','x3','x4','x5','x6'];
+        var jokes = Math.floor(Math.random()*arr.length);
+        alert(arr[jokes]);
+    }
+}
+
+
+var x1 = new Xiaona();   //只需创建一次；
+while(true){
+    // var x1 = new Xiaona();    这个对象只需创建一次就够了，如果写在while里，就会每循环一次就创建一次对象，会造成资源的浪费；
+
+   //开头提示用户进行选择；
+var msg = x1.Xunwen();  
+
+
+   //退出功能；
+if(msg === 'q'){
+    x1.tuichu();
+    break;
+}
+switch(msg){
+    //计算总和
+    case '1': 
+    case '总和':
+    x1.jishuan();
+    break;
+
+   //计算时间
+    case '2': 
+    case '时间':
+    x1.time();
+    break;
+
+    //讲笑话
+    case '3': 
+    case '笑话': 
+    x1.jokes();
+    break;
+
+    default :
+    x1.unknow();
+    break
+
+
+}
+
+}
+
+</script>
+</html>
